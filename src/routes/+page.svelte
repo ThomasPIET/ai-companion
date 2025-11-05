@@ -6,13 +6,9 @@
 		let {data, form} = $props();
 
 		let prompt = $state('');
-
-		console.log(form);
-
 </script>
 
 
-<p>Hello {data.name}</p>
 
 <form method='post'>
 	<input type='hidden' name='prompt' value={prompt}/>
