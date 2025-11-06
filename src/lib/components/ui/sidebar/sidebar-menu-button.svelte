@@ -31,7 +31,7 @@
 
 	let {
 		ref = $bindable(null),
-		class: className,
+		class: className = '',
 		children,
 		child,
 		variant = "default",

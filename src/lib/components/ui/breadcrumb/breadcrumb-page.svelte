@@ -3,18 +3,20 @@
 
 	let {
 		ref = $bindable(null),
-		class: className = "",
+		class: className,
 		children,
 		...restProps
 	} = $props();
 </script>
 
-<div
+<span
 	bind:this={ref}
-	data-slot="sidebar-header"
-	data-sidebar="header"
-	class={cn("flex flex-col gap-2 p-2", className)}
+	data-slot="breadcrumb-page"
+	role="link"
+	aria-disabled="true"
+	aria-current="page"
+	class={cn("text-foreground font-normal", className)}
 	{...restProps}
 >
 	{@render children?.()}
-</div>
+</span>

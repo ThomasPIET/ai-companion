@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1762267127895,
-      "tag": "0000_curly_timeslip",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1762270267607,
-      "tag": "0001_slow_valeria_richards",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1762332301456,
-      "tag": "0002_fat_cloak",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1762332878988,
-      "tag": "0003_thin_whirlwind",
+      "when": 1762357770856,
+      "tag": "0000_ancient_brood",
       "breakpoints": true
     }
   ]
