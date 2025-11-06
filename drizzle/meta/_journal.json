@@ -8,6 +8,20 @@
       "when": 1762357770856,
       "tag": "0000_ancient_brood",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1762441494542,
+      "tag": "0001_new_giant_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1762441759102,
+      "tag": "0002_lush_firestar",
+      "breakpoints": true
     }
   ]
 }

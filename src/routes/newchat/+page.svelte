@@ -4,7 +4,6 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Send } from '@lucide/svelte';
 	import AppNavbar from '$lib/components/app-navbar.svelte';
-	import { Breadcrumb } from '$lib/components/ui/breadcrumb';
 	let prompt = $state('');
 
 
@@ -12,10 +11,14 @@
 		{ name: 'Accueil', href: '/' },
 		{ name: 'Nouvelle Conversation', href: null }
 	];
+
+	//TODO: Mettre des transition 
+
 </script>
 
 
-<AppNavbar breadcrumb={breadcrumb} />
+
+<AppNavbar breadcrumbs={breadcrumb} />
 <div class=" w-full h-full border border-red-200">
 	<div>
 		<h1>Commencez une nouvelle conversation</h1>
@@ -30,7 +33,7 @@
 				name='prompt'
 				id='prompt'
 				bind:value={prompt}
-			
+		
 			/>
 			<Button type='submit' disabled={!prompt.trim()}>
 				<Send />

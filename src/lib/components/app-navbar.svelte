@@ -5,7 +5,7 @@
     import { Separator } from "$lib/components/ui/separator/index.js";
 
 
-    let { breadcrumb = []} = $props();
+    let { breadcrumbs = []} = $props();
 
 </script>
   <header class="flex h-16 shrink-0 items-center gap-2 px-4">
@@ -13,7 +13,7 @@
     <Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
     <Breadcrumb.Root>
       <Breadcrumb.List>
-        {#each breadcrumb as item }
+        {#each breadcrumbs as item }
           <Breadcrumb.Item class="hidden md:block">
               <Breadcrumb.Link href={item.href}>{item.name}</Breadcrumb.Link>
           </Breadcrumb.Item>
