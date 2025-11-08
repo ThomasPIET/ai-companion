@@ -2,8 +2,8 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema';
 import { env } from '$env/dynamic/private';
-import { question, answer, chat } from './schema';
-
+import { question, answer, chat, } from './schema';
+import { desc } from 'drizzle-orm';
 if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
 
 const client = postgres(env.DATABASE_URL);
@@ -45,7 +45,6 @@ export const insertChat = async (title) => {
  * @returns {Promise<{id: number, title: string, createdAt: *, questions: Array<{id: number, question: string | null, createdAt: *, answer: string | null}>} | null>}
  */
 export const getChatById = async (chatId) => {
-	console.log('Fetching chat by ID:', typeof chatId);
 	const result = await db.query.chat.findFirst({
 		where: (chat, { eq }) => eq(chat.id, chatId),
 		with: {
@@ -74,4 +73,7 @@ export const getChatById = async (chatId) => {
 	};
 };
 
-export const getAllTitles = async () => {};
+export const getAllTitles = async () => {
+
+	return await db.select({ id :chat.id, title : chat.title}).from(chat).orderBy(desc(chat.createdAt))
+};

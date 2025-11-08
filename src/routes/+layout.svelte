@@ -6,7 +6,16 @@
 	import AppSidebar from "$lib/components/app-sidebar.svelte";
 	import AppNavbar from '$lib/components/app-navbar.svelte';
 
-	let { children } = $props();
+	let { children, data } = $props();
+
+	let Titles = $state([])
+
+	$effect(() => {
+		if (data?.titles) {
+			Titles = data.titles; 
+		}
+	});
+
 </script>
 
 <svelte:head>
@@ -14,7 +23,7 @@
 </svelte:head>
 
 <Sidebar.Provider>
-	<AppSidebar />
+	<AppSidebar titles={Titles}/>
 	<main>
 		{@render children?.()}
 	</main>

@@ -1,48 +1,27 @@
-<script  module>
-	const data = {
-	  navMain: [
-		{
-		  title: "Historique",
-		  url: "",
-		  items: [
-			{
-			  title: "Components",
-			  url: "#",
-			},
-			{
-			  title: "File Conventions",
-			  url: "#",
-			},
-			{
-			  title: "Functions",
-			  url: "#",
-			},
-			{
-			  title: "next.config.js Options",
-			  url: "#",
-			},
-			{
-			  title: "CLI",
-			  url: "#",
-			},
-			{
-			  title: "Edge Runtime",
-			  url: "#",
-			},
-		  ],
-		},
-	  ],
-	};
-  </script>
-
 <script lang="ts">
 	//@ts-nocheck
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
   import type { ComponentProps } from "svelte";
   import {Bot} from "@lucide/svelte"
-  let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+  let { ref = $bindable(null), titles = [], ...restProps } = $props();
+
+  let data = $derived({
+        navMain: [
+            {
+                title: "Historique",
+                url: "",
+                items: titles.map(t => ({
+                    title: t.title,
+                    url: `/chat/${t.id}`,
+                    id: t.id
+                }))
+            },
+        ],
+    });
 </script>
+
+
 <Sidebar.Root variant="floating" {...restProps}>
   <Sidebar.Header>
     <Sidebar.Menu>
@@ -91,9 +70,11 @@
               <Sidebar.MenuSub class="ml-0 border-l-0 px-1.5">
                 {#each item.items as subItem (subItem.title)}
                   <Sidebar.MenuSubItem>
-                    <Sidebar.MenuSubButton isActive={subItem.isActive}>
+                    <Sidebar.MenuSubButton  isActive={subItem.isActive}>
                       {#snippet child({ props })}
-                        <a href={subItem.url} {...props}>{subItem.title}</a>
+                        <a class="overflow-hidden text-ellipsis whitespace-nowrap block" href={subItem.url} {...props} title={subItem.title}>
+                          {subItem.title}
+                        </a>
                       {/snippet}
                     </Sidebar.MenuSubButton>
                   </Sidebar.MenuSubItem>

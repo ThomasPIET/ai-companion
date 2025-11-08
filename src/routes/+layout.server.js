@@ -1,8 +1,7 @@
-import { getAllTitles } from "$lib/server/db";
+import { getAllTitles } from '$lib/server/db';
 
 export async function load() {
-    
-    const res = await getAllTitles();
-    
-    return {};
+	const titles = await getAllTitles();
+
+	return { titles };
 }
