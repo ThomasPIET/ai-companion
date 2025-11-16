@@ -24,7 +24,7 @@
 
 <Sidebar.Provider>
 	<AppSidebar titles={Titles}/>
-	<main>
+	<Sidebar.Inset>
 		{@render children?.()}
-	</main>
+	</Sidebar.Inset>
 </Sidebar.Provider>
