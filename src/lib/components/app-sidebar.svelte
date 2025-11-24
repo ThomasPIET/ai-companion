@@ -2,7 +2,7 @@
 	//@ts-nocheck
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
-  import type { ComponentProps } from "svelte";
+		import type { ComponentProps } from "svelte";
   import {Bot} from "@lucide/svelte"
   let { ref = $bindable(null), titles = [], ...restProps } = $props();
 
@@ -47,7 +47,7 @@
 			<Sidebar.MenuItem>
 			  <Sidebar.MenuButton class="mb-8 hover:bg-transparent" size="lg">
 				{#snippet child({ props })}
-				  <a href="/newchat" {...props}>
+				  <a href="/" {...props}>
 					<Button class="w-full hover:cursor-auto" variant="outline" size="lg">
 					Nouveau chat
 					</Button>

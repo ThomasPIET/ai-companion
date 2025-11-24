@@ -12,6 +12,8 @@
     /** @type {Array<{question: string, answer: string | null}>} */
     let optimisticMessages = $state([]);
 
+    let chatContainer;
+
     const breadcrumb = [
         { name: 'Acceuil', href: '/' },
         { name: data.chat?.title, href: null }
@@ -21,18 +23,27 @@
         ...(data.chat?.questions || []),
         ...optimisticMessages
     ]);
+
+
+    $effect(()=> {
+        if (chatContainer && allMessages.length) {
+            chatContainer.scrollTo({
+                top: chatContainer.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    })
 </script>
 
-<div class="flex flex-col h-screen sticky bottom-0">
+<div class="flex flex-col h-screen ">
     <AppNavbar  breadcrumbs={breadcrumb}/>
 
-
-    <div class="flex-1 overflow-y-auto">
+    <div class="flex-1 overflow-y-auto " bind:this={chatContainer}>
         <div class="p-4 space-y-4">
             {#each allMessages as item}
                 <div class="flex justify-end">
                     <Message sender='user' message={item.question}/>
-                </div>
+                </div>  
                 <div class="flex justify-start">
                     {#if item.answer}
                         <Message sender='bot' message={item.answer}/>
@@ -100,7 +111,6 @@
                 </button>
             </div>
          </form>
-
     </div>
 </div>
 
